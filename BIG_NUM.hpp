@@ -151,6 +151,35 @@ public:
         return ans;
     }
 };
+void add(int a[],int b[],int c[])
+{
+	c[0] = max(a[0],b[0]);//c[0]记录c的长度
+	for (int i = 1;i <= c[0];i++)
+	{
+		c[i] = a[i] + b[i];
+	}
+	for (int i = 1;i <= c[0];i++)
+	{
+		c[i + 1] += c[i] / 10;//进位处理
+		c[i] %= 10;//进位处理
+	}
+	while (c[c[0] + 1] > 0) c[0]++;//最后把c的长度解决一下
+}
+void subtration(int a[],int b[],int c[])
+{
+	c[0] = a[0];//c[0]记录c的长度
+	for (int i = 1;i <= c[0];i++){
+		c[i] = a[i] - b[i];
+	}
+	for (int i = 1;i <= c[0];i++){
+		if (z[i] < 0){//判断是否要退位
+			z[i + 1] -= 1;//退位操作
+			z[i] += 10;//退位操作
+		}
+	}
+	while (c[c[0]] == 0 && c[0] > 1) c[0]--;//最后把c的长度解决一下
+}
+
 typedef BIG_NUM bign;
 
 #endif
